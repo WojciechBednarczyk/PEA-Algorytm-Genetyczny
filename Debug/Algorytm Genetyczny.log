@@ -1,4 +1,6 @@
 ﻿  AlgorytmGenetyczny.cpp
 C:\Users\48795\Desktop\Studia\5 semestr\PEA\Algorytm Genetyczny\AlgorytmGenetyczny.cpp(27,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Users\48795\Desktop\Studia\5 semestr\PEA\Algorytm Genetyczny\AlgorytmGenetyczny.cpp(48,12): warning C4101: "wynik_czasowy": lokalna zmienna, do której nie istnieje odwołanie
+C:\Users\48795\Desktop\Studia\5 semestr\PEA\Algorytm Genetyczny\AlgorytmGenetyczny.cpp(39,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Users\48795\Desktop\Studia\5 semestr\PEA\Algorytm Genetyczny\AlgorytmGenetyczny.cpp(54,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Users\48795\Desktop\Studia\5 semestr\PEA\Algorytm Genetyczny\AlgorytmGenetyczny.cpp(74,12): warning C4101: "wynik_czasowy": lokalna zmienna, do której nie istnieje odwołanie
   Algorytm Genetyczny.vcxproj -> C:\Users\48795\Desktop\Studia\5 semestr\PEA\Algorytm Genetyczny\Debug\Algorytm Genetyczny.exe
