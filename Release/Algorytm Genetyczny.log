@@ -2,11 +2,11 @@
 C:\Users\48795\Desktop\Studia\5 semestr\PEA\Algorytm Genetyczny\AlgorytmGenetyczny.cpp(27,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
 C:\Users\48795\Desktop\Studia\5 semestr\PEA\Algorytm Genetyczny\AlgorytmGenetyczny.cpp(39,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
 C:\Users\48795\Desktop\Studia\5 semestr\PEA\Algorytm Genetyczny\AlgorytmGenetyczny.cpp(54,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Users\48795\Desktop\Studia\5 semestr\PEA\Algorytm Genetyczny\AlgorytmGenetyczny.cpp(326,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Users\48795\Desktop\Studia\5 semestr\PEA\Algorytm Genetyczny\AlgorytmGenetyczny.cpp(332,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
 C:\Users\48795\Desktop\Studia\5 semestr\PEA\Algorytm Genetyczny\AlgorytmGenetyczny.cpp(74,12): warning C4101: "wynik_czasowy": lokalna zmienna, do której nie istnieje odwołanie
   Trwa generowanie kodu
   1 of 436 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   Algorytm Genetyczny.vcxproj -> C:\Users\48795\Desktop\Studia\5 semestr\PEA\Algorytm Genetyczny\Release\Algorytm Genetyczny.exe

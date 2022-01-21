@@ -141,10 +141,10 @@ int main()
     /*--------------------------------------------------*/
     //parametry programu
 
-    int rozmiar_populacji=30;
-    int liczba_generacji=100;
-    int liczba_krzyzowan_na_generacje=10;
-    int liczba_mutacji_na_generacje =10;
+    int rozmiar_populacji=10;
+    int liczba_generacji=10000;
+    int liczba_krzyzowan_na_generacje=5;
+    int liczba_mutacji_na_generacje =3;
         
    
     
@@ -214,7 +214,7 @@ int main()
 
 
 
-
+    int licznik_krzyzowan;
     vector<int> nowy_chromosom;
     //glowna petla programu
     for (int i = 0; i < liczba_generacji; i++)
@@ -224,10 +224,14 @@ int main()
         int wylosowany_chromosom2;
         int miasto_do_zamiany1;
         int miasto_do_zamiany2;
-
+        licznik_krzyzowan = 0;
         for (int j = 0; j < liczba_krzyzowan_na_generacje; j++)
         {   
-
+            licznik_krzyzowan++;
+            if (licznik_krzyzowan==100)
+            {
+                break;
+            }
             nowy_chromosom.clear();
             //losowanie chromosomow do krzyzowania
             wylosowany_chromosom1 = rand() % rozmiar_populacji;
@@ -236,6 +240,7 @@ int main()
             {
                 wylosowany_chromosom2 = rand() % rozmiar_populacji;
             } while (wylosowany_chromosom2 == wylosowany_chromosom1);
+
             //krzyzowanie
             for (int k = 0; k < ilosc_miast/2; k++)
             {
@@ -273,12 +278,13 @@ int main()
         {
             
             //mutacja swap
-            wylosowany_chromosom1 = rand() % populacja.size();
-            miasto_do_zamiany1 = rand() % ilosc_miast;
-            miasto_do_zamiany2;
+           
+
            
             do
             {
+                wylosowany_chromosom1 = rand() % populacja.size();
+                miasto_do_zamiany1 = rand() % ilosc_miast;
                 do
                 {
                     miasto_do_zamiany2 = rand() % ilosc_miast;
