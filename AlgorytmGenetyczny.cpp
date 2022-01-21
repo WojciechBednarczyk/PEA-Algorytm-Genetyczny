@@ -216,7 +216,16 @@ int main()
 
     int licznik_krzyzowan;
     vector<int> nowy_chromosom;
+
+
+    /*===================================*/
+    //
+    //
     //glowna petla programu
+    //
+    //
+    /*===================================*/
+    
     for (int i = 0; i < liczba_generacji; i++)
     {
         bool czy_poprawa = false;
@@ -280,7 +289,7 @@ int main()
             //mutacja swap
            
 
-           
+            nowy_chromosom.clear();
             do
             {
                 wylosowany_chromosom1 = rand() % populacja.size();
@@ -303,7 +312,49 @@ int main()
             populacja.push_back(nowy_chromosom);
 
         }
+        
 
+        //mutacja inwersyjna
+
+        vector<int> podzbior_chromosomu;
+        for (int j = 0; j < liczba_mutacji_na_generacje; j++)
+        {
+            podzbior_chromosomu.clear();
+            do
+            {
+                wylosowany_chromosom1 = rand() % populacja.size();
+                miasto_do_zamiany1 = rand() % ilosc_miast;
+                do
+                {
+                    miasto_do_zamiany2 = rand() % ilosc_miast;
+                } while (miasto_do_zamiany2 == miasto_do_zamiany1);
+
+                if (miasto_do_zamiany1>miasto_do_zamiany2)
+                {
+                    int temp;
+                    temp=miasto_do_zamiany2;
+                    miasto_do_zamiany2 = miasto_do_zamiany1;
+                    miasto_do_zamiany1 = temp;
+                }
+                if (miasto_do_zamiany1 == 0 && miasto_do_zamiany2 == ilosc_miast - 1)
+                {
+                    continue;
+                }
+                //usuwanie podzbioru z chromosomu
+                nowy_chromosom = populacja[wylosowany_chromosom1];
+                for (int k = miasto_do_zamiany1; k <= miasto_do_zamiany2; k++)
+                {
+                    podzbior_chromosomu.push_back(populacja[wylosowany_chromosom1][k]);
+                    nowy_chromosom.erase(remove(nowy_chromosom.begin(), nowy_chromosom.end(), populacja[wylosowany_chromosom1][k]), nowy_chromosom.end());
+                }
+
+                //wstawianie podzbioru do nowego chromosomu
+                int miejsce_do_wstawienia = rand() % nowy_chromosom.size();
+
+                nowy_chromosom.insert(nowy_chromosom.begin() + miejsce_do_wstawienia, podzbior_chromosomu.begin(), podzbior_chromosomu.end());
+
+            } while (czy_chromosom_istnieje_w_populacji(populacja, nowy_chromosom));
+        }
 
         //wypisanie poprawy rozwiazania
         if (czy_poprawa==true)
@@ -328,6 +379,8 @@ int main()
         //cout << endl << endl;
         //Sleep(1000);
     }
+
+
 
     for (int i = 0; i < najlepsze_rozwiazanie.size()-1; i++)
     {
