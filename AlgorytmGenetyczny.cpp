@@ -33,6 +33,13 @@ int oblicz_wartosc_chromosomu(vector<int> chromosom)
 }
 
 
+vector<vector<int>> selekcja(vector<vector<int>> populacja)
+{
+    
+    return populacja;
+}
+
+
 int main()
 {
     srand(unsigned(time(NULL)));
@@ -116,7 +123,7 @@ int main()
     //parametry programu
 
     int rozmiar_populacji=10;
-    int liczba_generacji=10;
+    int liczba_generacji=100;
     int liczba_krzyzowan_na_generacje=5;
     int liczba_mutacji_na_generacje = 2;
         
@@ -187,27 +194,23 @@ int main()
 
 
 
-    //wypisywanie populacji
-    cout << endl << endl << endl;
-    for (int i = 0; i < populacja.size(); i++)
-    {
-        for (int j = 0; j < populacja[i].size(); j++)
-        {
-            cout << populacja[i][j] << " ";
-        }
-        cout << endl;
-    }
+
 
     vector<int> nowy_chromosom;
     //glowna petla programu
     for (int i = 0; i < liczba_generacji; i++)
     {
+        bool czy_poprawa = false;
+        int wylosowany_chromosom1;
+        int wylosowany_chromosom2;
+        int miasto_do_zamiany1;
+        int miasto_do_zamiany2;
         for (int j = 0; j < liczba_krzyzowan_na_generacje; j++)
         {
             nowy_chromosom.clear();
             //losowanie chromosomow do krzyzowania
-            int wylosowany_chromosom1 = rand() % rozmiar_populacji;
-            int wylosowany_chromosom2;
+            wylosowany_chromosom1 = rand() % rozmiar_populacji;
+ 
 
             do
             {
@@ -237,8 +240,15 @@ int main()
             }
             else
             {
+                if (oblicz_wartosc_chromosomu(nowy_chromosom) < najlepsza_wartosc)
+                {
+                    najlepsze_rozwiazanie = nowy_chromosom;
+                    najlepsza_wartosc = oblicz_wartosc_chromosomu(nowy_chromosom);
+                    czy_poprawa = true;
+                }
                 populacja.push_back(nowy_chromosom);
             }
+           
 
             //for (int k = 0; k < nowy_chromosom.size(); k++)
             //{
@@ -249,8 +259,57 @@ int main()
             
 
         }
+        for (int j = 0; j < liczba_mutacji_na_generacje; j++)
+        {
+            //mutacja swap
+            wylosowany_chromosom1 = rand() % populacja.size();
+            miasto_do_zamiany1 = rand() % ilosc_miast;
+            miasto_do_zamiany2;
+            do
+            {
+                miasto_do_zamiany2 = rand() % ilosc_miast;
+            } while (miasto_do_zamiany2 == miasto_do_zamiany1);
+
+            nowy_chromosom = populacja[wylosowany_chromosom1];
+
+            do
+            {
+                iter_swap(nowy_chromosom.begin() + miasto_do_zamiany1, nowy_chromosom.begin() + miasto_do_zamiany2);
+
+            } while (czy_chromosom_istnieje_w_populacji(populacja, nowy_chromosom));
+            if (oblicz_wartosc_chromosomu(nowy_chromosom)<najlepsza_wartosc)
+            {
+                najlepsze_rozwiazanie = nowy_chromosom;
+                najlepsza_wartosc = oblicz_wartosc_chromosomu(nowy_chromosom);
+                czy_poprawa = true;
+            }
+            populacja.push_back(nowy_chromosom);
+
+
+ /*           cout << endl;
+            cout << "Mutacja " << wylosowany_chromosom1 << " " << miasto_do_zamiany1 << " " << miasto_do_zamiany2 << endl;
+            Sleep(1000000);*/
+        }
+
+
+        //wypisanie poprawy rozwiazania
+        if (czy_poprawa==true)
+        {
+            cout << i << " " << najlepsza_wartosc << " ";
+            prd = 100 * (najlepsza_wartosc - wartosc_optymalna) / (float)wartosc_optymalna;
+            cout << fixed << setprecision(2) << prd << "%" << endl;
+        }
     }
-    
+    //wypisywanie populacji
+    //cout << endl << endl << endl;
+    //for (int i = 0; i < populacja.size(); i++)
+    //{
+    //    for (int j = 0; j < populacja[i].size(); j++)
+    //    {
+    //        cout << populacja[i][j] << " ";
+    //    }
+    //    cout << endl;
+    //}
 
 
 }
